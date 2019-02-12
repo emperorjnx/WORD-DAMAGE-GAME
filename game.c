@@ -18,6 +18,7 @@ void helpbox()
     FILE *help;
     char c;
 
+
     help = fopen("helpbox.txt", "r");
     if (help == NULL)
     {
@@ -33,7 +34,7 @@ void helpbox()
     }
 
     fclose(help);
-    _getch();
+    getch();
     clearscreen();
 
 }
