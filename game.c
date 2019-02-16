@@ -4,14 +4,50 @@
 #include <conio.h>
 #include <time.h>
 #include <windows.h>
-#include "crossword.c"
+#include "crossword.h"
+
+#define HEALTH 100
+
+int main()
+{
+char choice='\0';
+
+printf("%13s WELCOME TO OUR GAME\n\n\n\n"," ");
+printf("      DO YOU WANT TO VIEW THE HELP SECTION (Y/N) : ");
+choice = getchar();
+getchar();
+
+if (choice=='Y' || choice=='y')
+    {
+        helpbox();
+        choice='\0';
+    }
+
+clearscreen();
+printf("            BEGIN THE GAME (Y/N) : ");
+choice = getchar();
+
+if (choice=='Y' || choice=='y')
+    {
+        printf("\n\n%10sBEGINNING THE GAME!!!!!"," ");
+        Sleep(4000);
+        clearscreen();
+        playing_console();
+    }
+else
+{
+    printf("THANKS FOR PLAYING!!");
+}
+
+printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+return 0;
+}
+
 
 void clearscreen()
 {
     system("cls");
 }
-
-
 
 
 void helpbox()
@@ -41,42 +77,19 @@ void helpbox()
 }
 
 
-
-
-
-int main()
+void playing_console()
 {
-char choice='\0';
+    char plWord[10];
+    crossword();
 
-printf("%10s WELCOME TO OUR GAME\n\n\n\n"," ");
-printf("DO YOU WANT TO VIEW THE HELP SECTION (Y/N) : ");
-choice = getchar();
-getchar();
-
-if (choice=='Y' || choice=='y')
-    {
-        helpbox();
-        choice='\0';
-    }
-
-clearscreen();
-printf("            BEGIN THE GAME (Y/N) : ");
-choice = getchar();
-
-if (choice=='Y' || choice=='y')
-    {
-        printf("\n\n%10sBEGINNING THE GAME!!!!!"," ");
-        Sleep(4000);
-        clearscreen();
-        crossword();
-    }
-else
-{
-    printf("THANKS FOR PLAYING!!");
-    exit(0);
 }
 
-printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-return 0;
+int checker(char s[])
+{
+    return 0;
 }
 
+int damage_analyser(char s[])
+{
+    return 1;
+}
