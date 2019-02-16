@@ -1,9 +1,11 @@
-#include<stdio.h>
-#include<conio.h>
+#include <stdio.h>
+#include <time.h>
+#include <time.h>
 
-int main()
+void crossword()
 {
-	int i, j;
+    srand(time(0));
+	int i, j, k=0;
 	for (i = 0; i <= 17; i++)
 	{
 		for (j = 1; j < 18; j++)
@@ -17,7 +19,8 @@ int main()
 				i == 11 && j == 3 || i == 11 && j == 7 || i == 11 && j == 11 || i == 11 && j == 15 ||
 				i == 15 && j == 3 || i == 15 && j == 7 || i == 15 && j == 11 || i == 15 && j == 15)
 			{
-				random(1);
+				random(1,k);
+				k++;
 			}
 
 			else
@@ -30,23 +33,23 @@ int main()
 
 	}
 	getch();
-
-
-
 }
 
-random(int n)
+int random(int n, int k)
 {
 	char consonent[] = { 'Q','W','R','T','Y','P','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M' };
 	char vowel[] = { 'A','I','O','U','E' };
 	int i = 0, j = 0;
 	while (j < n) {
-		if (i == 0) {
-			printf("%c ", consonent[rand() % 21]);
+		if ((k%5) == 0)
+        {
+			printf("%c ", vowel[rand() % 5]);
 			i++;
 		}
-		else if (i == 1) {
-			printf("%c ", vowel[rand() % 5]);
+		else
+        {
+            printf("%c ", consonent[rand() % 21]);
+
 			--i;
 		}
 		j++;

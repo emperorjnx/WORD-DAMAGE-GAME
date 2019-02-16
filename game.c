@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <time.h>
 #include <windows.h>
+#include "crossword.c"
 
 void clearscreen()
 {
@@ -67,6 +68,7 @@ if (choice=='Y' || choice=='y')
         printf("\n\n%10sBEGINNING THE GAME!!!!!"," ");
         Sleep(4000);
         clearscreen();
+        crossword();
     }
 else
 {
