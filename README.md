@@ -1,0 +1,3 @@
+# WORD-DAMAGE-GAME
+THIS IS A WORD DAMAGE GAME
+run using game.c
