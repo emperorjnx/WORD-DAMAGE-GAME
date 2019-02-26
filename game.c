@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <conio.h>
 #include <time.h>
 #include <windows.h>
 #include "crossword.h"
@@ -39,8 +38,11 @@ else
 }
 
 printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+Sleep(3000);
 return 0;
 }
+
+
 
 
 void clearscreen()
