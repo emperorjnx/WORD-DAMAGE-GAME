@@ -5,6 +5,7 @@
 #include <windows.h>
 #include "crossword.h"
 
+/* defining the max health for the characters */
 #define HEALTH 100
 
 int main()
@@ -12,17 +13,19 @@ int main()
 char choice='\0';
 
 printf("%13s WELCOME TO OUR GAME\n\n\n\n"," ");
+
+/* Help section part of the game */
 printf("      DO YOU WANT TO VIEW THE HELP SECTION (Y/N) : ");
 choice = getchar();
 getchar();
-
 if (choice=='Y' || choice=='y')
     {
         helpbox();
         choice='\0';
     }
-
 clearscreen();
+
+/* Main game */
 printf("            BEGIN THE GAME (Y/N) : ");
 choice = getchar();
 
@@ -37,6 +40,8 @@ else
     printf("THANKS FOR PLAYING!!");
 }
 
+clearscreen();
+printf("\n\n%12sTHANKS FOR PLAYING!!"," ");
 printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 Sleep(3000);
 return 0;
@@ -44,13 +49,13 @@ return 0;
 
 
 
-
+/* terminal clearing function */
 void clearscreen()
 {
     system("cls");
 }
 
-
+/* Help section function */
 void helpbox()
 {
     FILE *help;
@@ -76,7 +81,7 @@ void helpbox()
 
 }
 
-
+/* game handling function */
 void playing_console()
 {
     int health_1=HEALTH ,health_2=HEALTH;
@@ -86,27 +91,33 @@ void playing_console()
     {
     clearscreen();
     crossword();
+
     printf("\nPlayer - 1\n");
     health_display(health_1);
+
     printf("\nPlayer - 2\n");
     health_display(health_2);
+
     printf("\n\nEnter your word\n\n");
     printf("Player - 1 : ");
     scanf("%s",plWord);
     dam_1=damage_analyser(plWord);
     printf("\nPlayer - 1 does %d damage\n",dam_1);
+
     printf("\n\nEnter your word\n\n");
     printf("Player - 2 : ");
     scanf("%s",plWord);
     dam_2=damage_analyser(plWord);
     printf("\nPlayer - 2 does %d damage\n",dam_2);
-    health_1-=dam_2;
-    health_2-=dam_1;
+
+    health_1 -= dam_2;
+    health_2 -= dam_1;
     Sleep(2000);
     }
     clearscreen();
     printf("\n\n\n\n          THE WINNER IS !!!!\n          ");
     health_1>health_2?printf("PLAYER - 1"):printf("PLAYER - 2");
+    Sleep(3000);
 }
 
 
@@ -119,7 +130,7 @@ void health_display(int n)
     printf("\n");
 }
 
-
+/* Damage Analysing function */
 int damage_analyser(char s[])
 {
     char epic_letter[4]={'Q','Z','Y','X'};

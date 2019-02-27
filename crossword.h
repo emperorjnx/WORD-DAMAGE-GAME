@@ -6,6 +6,7 @@ void crossword()
 {
     srand(time(0));
 	int i, j, k=0;
+	/* Initialising the row and column */
 	for (i = 0; i <= 17; i++)
 	{
 		for (j = 1; j < 18; j++)
@@ -35,6 +36,7 @@ void crossword()
 
 }
 
+/* Generates random letters when called */
 random(int n, int k)
 {
 	char consonent[] = { 'Q','W','R','T','Y','P','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M' };
@@ -49,7 +51,6 @@ random(int n, int k)
 		else
         {
             printf("%c ", consonent[rand() % 21]);
-
 			--i;
 		}
 		j++;
