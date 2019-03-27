@@ -180,7 +180,7 @@ void playing_console()
     else
     {
     dam_2=damage_analyser(plWord[i].word);
-    printf("\nPlayer - 2 does %d damage\n",dam_1);
+    printf("\nPlayer - 2 does %d damage\n",dam_2);
     }
 
     health_1 -= dam_2;
@@ -362,7 +362,7 @@ void comp_console()
     else
     {
     dam_2=damage_analyser(plWord[i].word);
-    printf("\nCOMPUTER does %d damage\n",dam_1);
+    printf("\nCOMPUTER does %d damage\n",dam_2);
     }
 
     health_1 -= dam_2;

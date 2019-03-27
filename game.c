@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "GAMEPLAY.h"
+#include "logo.h"
 
 int main()
 {
@@ -36,6 +37,7 @@ if (choice=='Y' || choice=='y')
     {
 
         printf("\n\n%12sBEGINNING THE GAME!!!!!"," ");
+        logo();
         Sleep(4000);
         if(option == 1)
             playing_console();
