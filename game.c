@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <time.h>
-#include "GAMEPLAY.h"
-#include "logo.h"
+#include "func.h"
 
 int main()
 {
