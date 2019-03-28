@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <windows.h>
+#include <MMsystem.h>
 
 /* defining the max health for the characters */
 #define HEALTH 100
@@ -72,6 +73,21 @@ void random(char *a)
     a[17]='\0';
 }
 
+void audio_sync(char *a)
+{
+    PlaySound(TEXT(a),NULL,SND_SYNC);
+}
+
+void audio_async(char *a)
+{
+    PlaySound(TEXT(a),NULL,SND_ASYNC || SND_LOOP);
+}
+
+void audio_stop()
+{
+        PlaySound(NULL,NULL,SND_SYNC);
+}
+
 /* terminal clearing function */
 void clearscreen()
 {
@@ -114,6 +130,11 @@ void playing_console()
 
     while(health_1>0 && health_2>0)
     {
+    if(health_1 < 40 || health_2< 40)
+        audio_async("intense music.wav");
+    else
+        audio_async("play music.wav");
+
     clearscreen();
     crossword(a);
 
@@ -143,7 +164,8 @@ void playing_console()
         printf("\nINVALID WORD!!\n");
     else if(flag)
     {
-        printf("\nSorry that word has already been used\nRESURRECTED DAMAGE you lose 10 bars of HP!!");
+        printf("\nSorry that word has already been used\nQUAD DAMAGE you lose 10 bars of HP!!");
+        audio_sync("quad damage.wav");
         health_1-=10;
         flag = 0;
     }
@@ -152,6 +174,11 @@ void playing_console()
     dam_1=damage_analyser(plWord[i].word);
     printf("\nPlayer - 1 does %d damage\n",dam_1);
     }
+
+    if(health_1 < 40 || health_2< 40)
+        audio_async("intense music.wav");
+    else
+        audio_async("play music.wav");
 
     printf("\n\nEnter your word\n\n");
     i++;
@@ -173,7 +200,8 @@ void playing_console()
         printf("\nINVALID WORD!!\n");
     else if(flag)
     {
-        printf("\nSorry that word has already been used\nRESURRECTED DAMAGE you lose 10 bars of HP!!");
+        printf("\nSorry that word has already been used\nQUAD DAMAGE you lose 10 bars of HP!!");
+        audio_sync("quad damage.wav");
         health_2-=10;
         flag = 0;
     }
@@ -186,11 +214,13 @@ void playing_console()
     health_1 -= dam_2;
     health_2 -= dam_1;
     Sleep(2000);
+    dam_1 = dam_2 = 0;
     }
     clearscreen();
     printf("\n\n\n\n          THE WINNER IS !!!!\n          ");
+    Sleep(1000);
     health_1>health_2?printf("PLAYER - 1"):printf("PLAYER - 2");
-    Sleep(3000);
+    audio_sync("win.wav");
 }
 
 /* Health display function */
@@ -217,6 +247,13 @@ int damage_analyser(char s[])
         }
     }
     damage=(strlen(s)+point)*5;
+    if (damage <=20)
+        audio_sync("damage1.wav");
+    else if (damage ==25)
+        audio_sync("damage2.wav");
+    else
+        audio_sync("damage3.wav");
+
     return damage;
 }
 
@@ -298,6 +335,7 @@ void comp_console()
 
     while(health_1>0 && health_2>0)
     {
+    audio_async("comp music.wav");
     clearscreen();
     comp_crossword(a);
 
@@ -327,7 +365,8 @@ void comp_console()
         printf("\nINVALID WORD!!\n");
     else if(flag)
     {
-        printf("\nSorry that word has already been used\nRESURRECTED DAMAGE you lose 10 bars of HP!!");
+        printf("\nSorry that word has already been used\nQUAD DAMAGE you lose 10 bars of HP!!");
+        audio_sync("quad damage.wav");
         health_1-=10;
         flag = 0;
     }
@@ -336,6 +375,8 @@ void comp_console()
     dam_1=damage_analyser(plWord[i].word);
     printf("\nPlayer does %d damage\n",dam_1);
     }
+
+    audio_async("comp music.wav");
 
     printf("\n\nEnter your word\n\n");
     i++;
@@ -355,7 +396,8 @@ void comp_console()
 
     if(flag)
     {
-        printf("\nSorry that word has already been used\nRESURRECTED DAMAGE you lose 10 bars of HP!!");
+        printf("\nSorry that word has already been used\nQUAD DAMAGE you lose 10 bars of HP!!");
+        audio_sync("quad damage.wav");
         health_2-=10;
         flag = 0;
     }
@@ -367,12 +409,14 @@ void comp_console()
 
     health_1 -= dam_2;
     health_2 -= dam_1;
+    dam_1 = dam_2 = 0;
     Sleep(2000);
     }
     clearscreen();
     printf("\n\n\n\n          THE WINNER IS !!!!\n          ");
+    Sleep(1000);
     health_1>health_2?printf("PLAYER"):printf("COMPUTER");
-    Sleep(3000);
+    audio_sync("win.wav");
 }
 
 /* CROSSWORD */

@@ -37,8 +37,11 @@ if (choice=='Y' || choice=='y')
     {
 
         printf("\n\n%12sBEGINNING THE GAME!!!!!"," ");
+        Sleep(1000);
+        clearscreen();
+        audio_async("logo.wav");
         logo();
-        Sleep(4000);
+        Sleep(2500);
         if(option == 1)
             playing_console();
         else
@@ -47,6 +50,7 @@ if (choice=='Y' || choice=='y')
 else
 {
     printf("\nSEE YOU AGAIN\n");
+    audio_sync("fatality.wav");
 }
 
 clearscreen();
