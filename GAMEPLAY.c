@@ -364,7 +364,7 @@ int checker(const char word[])
         }
     else
         {
-        //if the word is present in the dictionary
+        //if the word is NOT  present in the dictionary
         fclose(dictionary);
         return 0;
         }
@@ -530,10 +530,10 @@ void comp_word(char *a)
 {
     char possible_words[100][100] =
     {"POLYMER","HEAL","BREATH","PLATE","BLAME","YES","LOW","WORM","LOST","LOSE",
-    "WAITER","TOWER","MAY","THIS","GLOW","PLAY","SHIT","PART","WAR","RAW","WORTH",
-    "HATE","HAY","GAY","LAY","LAME","EAT","TEA","MIGHT","LIGHT","STEW","WEST","SHIT",
-    "SPIT","TIPS","TIP","HIPS","HIP","SOAP","SHIP","SPERM","WRITE","PALMISTRY","BEST","REST",
-    "WASTE","YEAST","LEAST","LASER","BREAST","REST","BRA","BRO","GRIM","MIRE","MAYOR","MAYBE",
-    "WORTHY","LAWYER","LAW","LOST","LAST","PLOT","HOT","LOT","ABORT","ABSORB","AGLET"};
-    strcpy(a,possible_words[rand()%68]);
+    "WAITER","TOWER","MAY","THIS","GLOW","PLAY","PART","WAR","RAW","WORTH",
+    "HATE","HAY","LAY","LAME","EAT","TEA","MIGHT","LIGHT","STEW","WEST",
+    "SPIT","TIPS","TIP","LIPS","LIP","SOAP","SHIP","WRITE","PALMISTRY","BEST","REST",
+    "WASTE","YEAST","LEAST","LASER","REST","BRO","GRIM","MIRE","MAYOR","MAYBE",
+    "WORTHY","LAWYER","LAW","LOST","LAST","PLOT","LOT","ABORT","ABSORB","AGLET"};
+    strcpy(a,possible_words[rand()%60]);
 }

@@ -8,7 +8,7 @@ char choice='\0';
 int option = 0;
 
 printf("%13s WELCOME TO OUR GAME\n\n\n\n"," ");
-
+audio_async("intro.wav");
 /* Help section part of the game */
 printf("      DO YOU WANT TO VIEW THE HELP SECTION (Y/N) : ");
 choice = getchar();
